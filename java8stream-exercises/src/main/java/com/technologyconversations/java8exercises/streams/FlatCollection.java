@@ -7,21 +7,21 @@ import static java.util.stream.Collectors.toList;
 
 public class FlatCollection {
 
-    private FlatCollection() {
-    }
+	private FlatCollection() {
+	}
 
-    public static List<String> transform7(List<List<String>> collection) {
-        List<String> newCollection = new ArrayList<>();
-        for (List<String> subCollection : collection) {
-            for (String value : subCollection) {
-                newCollection.add(value);
-            }
-        }
-        return newCollection;
-    }
+	public static List<String> transform7(List<List<String>> collection) {
+		List<String> newCollection = new ArrayList<>();
+		for (List<String> subCollection : collection) {
+			for (String value : subCollection) {
+				newCollection.add(value);
+			}
+		}
+		return newCollection;
+	}
 
-    public static List<String> transform(List<List<String>> collection) {
-        return null;
-    }
+	public static List<String> transform(List<List<String>> collection) {
+		return collection.stream().flatMap(x -> x.stream()).collect(toList());
+	}
 
 }
